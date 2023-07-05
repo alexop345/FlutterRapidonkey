@@ -30,7 +30,7 @@ class AppElevatedButton extends StatelessWidget {
           side: BorderSide(width: 1, color: buttonColor(state)),
         ),
         onPressed: onPressed,
-        child: Text(text),
+        child: Text(text.toUpperCase()),
       ),
     );
   }
