@@ -1,10 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rapidonkey/themes/app_dimensions.dart';
+import 'package:flutter_rapidonkey/widgets/app_dialog.dart';
 import 'package:flutter_rapidonkey/widgets/app_elevated_button.dart';
 import 'package:flutter_rapidonkey/widgets/app_outlined_button.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
+
+  void _showDialog(BuildContext context) {
+    showDialog(
+      barrierDismissible: false,
+      context: context,
+      builder: (ctx) {
+        return Dialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(AppDimensions.defaultPlusRadius)
+          ),
+          child: const AppDialog(),
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +35,9 @@ class HomeScreen extends StatelessWidget {
             AppElevatedButton(
               text: 'Default',
               state: ElevateButtonState.active,
-              onPressed: () {},
+              onPressed: () {
+                _showDialog(context);
+              },
             ),
             AppElevatedButton(
               text: 'Tapped',
@@ -36,7 +54,7 @@ class HomeScreen extends StatelessWidget {
               state: OutlinedButtonState.active,
               onPressed: () {},
             ),
-           AppOutlinedButton(
+            AppOutlinedButton(
               text: 'Tapped',
               state: OutlinedButtonState.tapped,
               onPressed: () {},
