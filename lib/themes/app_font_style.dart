@@ -8,7 +8,7 @@ class AppFontStyle {
 
   static const String fontFamily = "Ubuntu";
 
-  static TextStyle titleText = const TextStyle(
+  static TextStyle customButton = const TextStyle(
     fontFamily: fontFamily,
     fontSize: fontSizeNormal,
     fontWeight: FontWeight.w500,

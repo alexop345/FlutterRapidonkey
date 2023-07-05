@@ -65,7 +65,7 @@ class CardWidget extends StatelessWidget {
       case CardStatus.complete:
         return AppColors.inactive;
       case CardStatus.incomplete:
-        return Colors.white;
+        return AppColors.white;
       case CardStatus.selected:
         return AppColors.selected;
     }
@@ -85,9 +85,9 @@ class CardWidget extends StatelessWidget {
       case CardStatus.complete:
         return AppFontStyle.cardText.copyWith(color: AppColors.inactiveDark);
       case CardStatus.incomplete:
-        return AppFontStyle.cardText.copyWith(color: AppColors.primary);
+        return AppFontStyle.cardText.copyWith(color: AppColors.secondary);
       case CardStatus.selected:
-        return AppFontStyle.cardText.copyWith(color: Colors.white);
+        return AppFontStyle.cardText.copyWith(color: AppColors.white);
     }
   }
 
@@ -113,7 +113,7 @@ class CardWidget extends StatelessWidget {
         return const Icon(
           Icons.drag_indicator_sharp,
           size: 20,
-          color: Colors.white,
+          color: AppColors.white,
         );
     }
   }
