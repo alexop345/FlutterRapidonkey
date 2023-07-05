@@ -13,54 +13,58 @@ class AppDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.fromLTRB(
-            AppDimensions.normalSpacing,
-            AppDimensions.defaultPlusSpacing,
-            AppDimensions.normalSpacing,
-            AppDimensions.zeroSpacing,
+    return Dialog(
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppDimensions.defaultPlusRadius)),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(
+              AppDimensions.normalSpacing,
+              AppDimensions.defaultPlusSpacing,
+              AppDimensions.normalSpacing,
+              AppDimensions.zeroSpacing,
+            ),
+            child: Text(
+              'Pause Shift',
+              style: AppFontStyle.dialogTitle,
+            ),
           ),
-          child: Text(
-            'Pause Shift',
-            style: AppFontStyle.dialogTitle,
+          const Divider(),
+          Padding(
+            padding: const EdgeInsets.symmetric(
+              horizontal: AppDimensions.normalSpacing,
+            ),
+            child: Text(
+              'Are you sure you want to pause your current shift?',
+              style: AppFontStyle.dialogText,
+            ),
           ),
-        ),
-        const Divider(),
-        Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: AppDimensions.normalSpacing,
+          Padding(
+            padding: const EdgeInsets.all(AppDimensions.normalSpacing),
+            child: Column(
+              children: [
+                AppElevatedButton(
+                  text: 'Yes',
+                  state: ElevateButtonState.active,
+                  onPressed: () {
+                    _close(context);
+                  },
+                ),
+                AppOutlinedButton(
+                  text: 'No',
+                  state: OutlinedButtonState.active,
+                  onPressed: () {
+                    _close(context);
+                  },
+                )
+              ],
+            ),
           ),
-          child: Text(
-            'Are you sure you want to pause your current shift?',
-            style: AppFontStyle.dialogText,
-          ),
-        ),
-        Padding(
-          padding: const EdgeInsets.all(AppDimensions.normalSpacing),
-          child: Column(
-            children: [
-              AppElevatedButton(
-                text: 'Yes',
-                state: ElevateButtonState.active,
-                onPressed: () {
-                  _close(context);
-                },
-              ),
-              AppOutlinedButton(
-                text: 'No',
-                state: OutlinedButtonState.active,
-                onPressed: () {
-                  _close(context);
-                },
-              )
-            ],
-          ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

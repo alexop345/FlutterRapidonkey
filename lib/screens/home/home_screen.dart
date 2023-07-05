@@ -12,12 +12,7 @@ class HomeScreen extends StatelessWidget {
       barrierDismissible: false,
       context: context,
       builder: (ctx) {
-        return Dialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(AppDimensions.defaultPlusRadius)
-          ),
-          child: const AppDialog(),
-        );
+        return const AppDialog();
       },
     );
   }
