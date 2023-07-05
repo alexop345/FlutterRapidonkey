@@ -19,32 +19,42 @@ class CardWidget extends StatelessWidget {
       ),
       child: InkWell(
         onTap: () {},
-        child: Padding(
-          padding: const EdgeInsets.symmetric(
-            horizontal: AppDimensions.defaultPlusSpacing,
-            vertical: AppDimensions.defaultSpacing,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                _cardServiceTitle(card.service),
-                style: _cardServiceTitleStyle(card.status),
+        child: Stack(
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(
+                horizontal: AppDimensions.defaultPlusSpacing,
+                vertical: AppDimensions.defaultSpacing,
               ),
-              Text(
-                card.street,
-                style: AppFontStyle.cardText,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    _cardServiceTitle(card.service),
+                    style: _cardServiceTitleStyle(card.status),
+                  ),
+                  Text(
+                    card.street,
+                    style: AppFontStyle.cardText,
+                  ),
+                  Text(
+                    card.city,
+                    style: AppFontStyle.cardText
+                        .copyWith(fontWeight: FontWeight.w400),
+                  ),
+                  Text(
+                    _cardOrderText(card.orders),
+                    style: AppFontStyle.cardText,
+                  ),
+                ],
               ),
-              Text(
-                card.city,
-                style: AppFontStyle.cardText.copyWith(fontWeight: FontWeight.w400),
-              ),
-              Text(
-                _cardOrderText(card.orders),
-                style: AppFontStyle.cardText,
-              ),
-            ],
-          ),
+            ),
+            Positioned(
+              bottom: AppDimensions.defaultSpacing,
+              right: AppDimensions.defaultSpacing,
+              child: _cardIcon(card.status),
+            ),
+          ],
         ),
       ),
     );
@@ -83,5 +93,28 @@ class CardWidget extends StatelessWidget {
 
   String _cardOrderText(int number) {
     return '$number ${number == 1 ? 'order' : 'orders'}';
+  }
+
+  Icon _cardIcon(CardStatus status) {
+    switch (status) {
+      case CardStatus.complete:
+        return const Icon(
+          Icons.check,
+          size: 20,
+          color: AppColors.selected,
+        );
+      case CardStatus.incomplete:
+        return const Icon(
+          Icons.drag_indicator_sharp,
+          size: 20,
+          color: AppColors.selected,
+        );
+      case CardStatus.selected:
+        return const Icon(
+          Icons.drag_indicator_sharp,
+          size: 20,
+          color: Colors.white,
+        );
+    }
   }
 }
