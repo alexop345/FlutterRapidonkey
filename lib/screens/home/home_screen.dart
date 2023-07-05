@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rapidonkey/screens/card/cards_screen.dart';
 import 'package:flutter_rapidonkey/themes/app_dimensions.dart';
 import 'package:flutter_rapidonkey/widgets/app_dialog.dart';
 import 'package:flutter_rapidonkey/widgets/app_elevated_button.dart';
@@ -14,6 +15,14 @@ class HomeScreen extends StatelessWidget {
       builder: (ctx) {
         return const AppDialog();
       },
+    );
+  }
+
+  void _navigateCards(BuildContext context) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => CardsScreen(),
+      ),
     );
   }
 
@@ -37,7 +46,9 @@ class HomeScreen extends StatelessWidget {
             AppElevatedButton(
               text: 'Tapped',
               state: ElevateButtonState.tapped,
-              onPressed: () {},
+              onPressed: () {
+                _navigateCards(context);
+              },
             ),
             AppElevatedButton(
               text: 'Inactive',

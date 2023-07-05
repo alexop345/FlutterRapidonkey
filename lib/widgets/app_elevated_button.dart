@@ -36,16 +36,14 @@ class AppElevatedButton extends StatelessWidget {
   }
 
   Color buttonColor(ElevateButtonState state) {
-    Color color;
     switch (state) {
       case ElevateButtonState.active:
-        color = AppColors.primary;
+        return AppColors.primary;
       case ElevateButtonState.tapped:
-        color = AppColors.primaryLight;
+        return AppColors.primaryLight;
       case ElevateButtonState.inactive:
-        color = AppColors.inactive;
+        return AppColors.inactive;
     }
-    return color;
   }
 }
 

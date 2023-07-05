@@ -37,16 +37,14 @@ class AppOutlinedButton extends StatelessWidget {
   }
 
   Color buttonColor(OutlinedButtonState state) {
-    Color color;
     switch (state) {
       case OutlinedButtonState.active:
-        color = AppColors.primary;
+        return AppColors.primary;
       case OutlinedButtonState.tapped:
-        color = AppColors.primaryLight;
+        return AppColors.primaryLight;
       case OutlinedButtonState.inactive:
-        color = AppColors.inactive;
+        return AppColors.inactive;
     }
-    return color;
   }
 }
 
